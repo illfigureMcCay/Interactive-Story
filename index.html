@@ -46,7 +46,13 @@ const story = {
 
 function createButton(Choice text, choice)
 let button = document.createElement("button");
-button.innerHTML = Click here for option    
+button.innerHTML = Click here for option;    
+inner.appendChild(button);
+button.addEventListner ("click", function() {
+    history.push(choice);
+    seeStory();
+});
+}
    
     </div>
 
