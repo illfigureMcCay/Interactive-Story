@@ -10,10 +10,15 @@
     <div id="intro">
         <h1>title title</h1>
 
-        <p>ONce upon a time. The intro of the story goes here </p>
-        </div>
+        <p>ONce upon a time there once was a king that lived in a castle. He lived with his  </p>
         <h2>And now here we are</h2>
-    </div id="story">
+    </div>
+
+<div id="story">
+
+</div>
+
+<div id="button">
 
 </div>
 
@@ -26,35 +31,72 @@ let buttonHolder = document.getElementById("button");
 let options = ["intro"]
 const story = {
     intro : {
-        The first choice : "Morning begins like every morning, the orange color of dawn bleeds into another new day as a kingdom guard. 
-             <p> Emil never, once, questioned ,w hat he did. He protected his village outpost with no hesitation. The same morning, he soon found that
+        text : `Morning begins like every morning, the orange color of dawn bleeds into another new day as a kingdom guard. 
+              Emil never, once, questioned ,what he did. He protected his village outpost with no hesitation. The same morning, he soon found that
                 everyone was gone without a trace. Only the weapons and the guards' belongings were left. As he stood in the empty outpost, Emil then 
                 faintly heard something odd past the border where the outpost lie. Booming sounds that drew closer, as if a huge mass of people were
                 heading this way. He had to make a choice as soon as possible. There was enough time to retreat away from the village, time to run away
-                completely, or to stay and defend the village where he stands.",</p>
+                completely, or to stay and defend the village where he stands.`,
                 options : [
-                    ["clicked Option 1", "Option 1"],
-                    ["clicked Option 2", "Option 2"],
-                    ["clicked Option 3", "Option 3"],
+                    ["Stay and fight", "option1"],
+                    ["Run away completly", "option2"],
+                    ["Retreat from the village and return to the kingdom", "option3"],
                 ]
-    }
+    
 },
 
 
+    option1 : {
+                text : "You choose to stay and defend the post where you stand. Now that the army is drawing closer and closer you start to realise you have no real chance of winning the fight if you dont have any weapons. So you go to a special room in the kingdom that holds a weapon generator that could give you any weapon desirable and you choose...",
+                choices : [
+                    ["Dual Wield Sword ", "Option1a"],
+                    ["Railgun ", "Option1b"],
+                    ["Hidden Blade cause your trained ", "Option 1c"],
+                ]
+            },
+            option1a : {
+                text : "You choose the dual wield sword, and the enemy is close you stand gaurd ready to fight. They arrive there and you ask Who are you? He replies by telling you that you have 2 choices leave peacfully or join him.",
+                    choices : [
+                    ["Join him ", "Option1d"],
+                    ["Leave Peacefully ", "Option1e"],
+                ]
+            },
+        }
 
 
 
-function createButton(Choice text, choice) 
-let button = document.createElement("button");
-button.innerHTML = Click here for option;    
-inner.appendChild(button);
-button.addEventListner ("click", function() {
-    history.push(choice);
-    seeStory();
-});
+function createButton(choiceText, choice){
+    let ,button = document.createElement("button"),
+    buttoninnerHTML = "Click here for option";   
+    inner.appendChild(button);
+    button.addEventListner ("click", function() {
+        history.push(choice);
+        seeStory();
+    });
 }
-   
-</div>
+
+function seeStory (){
+    let thisPage = history[history.length - 1]; // set thisPage to the end of the array. 
+            storyContainer.innerHTML = ""; // starts the HTML over
+            buttonContainer.innerHTML = ""; // starts the buttons over
+            
+            for(let page of history){ // The choices you made start builing on each other
+                stackOptions(story[page].text);
+            }
+            
+            for(let choice of story[currentPage].choices){ // build buttons from choices property of most recent story choice
+                makeButton(choice[0], choice[1])
+            }
+        }
+
+
+
+
+
+
+
+   </script>
+
 
 </body>
 </html>
