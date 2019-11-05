@@ -70,17 +70,17 @@ function createButton(choiceText, choice){
     buttoninnerHTML = "Click here for option";   
     inner.appendChild(button);
     button.addEventListner ("click", function() {
-        history.push(choice);
+        previous.push(choice);
         seeStory();
     });
 }
 
 function seeStory (){
-    let thisPage = history[history.length - 1]; // set thisPage to the end of the array. 
+    let thisPage = previous[previous.length - 1]; // set thisPage to the end of the array. 
             storyContainer.innerHTML = ""; // starts the HTML over
             buttonContainer.innerHTML = ""; // starts the buttons over
             
-            for(let page of history){ // The choices you made start builing on each other
+            for(let page of previous){ // The choices you made start builing on each other
                 stackOptions(story[page].text);
             }
             
